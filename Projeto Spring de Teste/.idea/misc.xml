@@ -4,8 +4,8 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../../pamcary/ms-clientes/ms-clientes/pom.xml" />
+        <option value="$PROJECT_DIR$/../testes junit/testes_spring/Projeto Spring de Teste/pom.xml" />
       </list>
     </option>
   </component>
