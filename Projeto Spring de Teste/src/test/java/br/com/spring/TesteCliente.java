@@ -1,11 +1,15 @@
 package br.com.spring;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class TesteCliente {
 
     @Test
+    @DisplayName("Deve criar o cadastro de pessoas")
     public void deveCriarOCadastroDePessoas(){
 
         //cenario e execucao
@@ -16,6 +20,7 @@ public class TesteCliente {
     }
 
     @Test
+    @DisplayName("Deve criar adicionar na lista de pessoas")
     public void deveAdicionarUmaPessoa(){
 
         //cenario
@@ -34,7 +39,8 @@ public class TesteCliente {
                 .contains(pessoa);
     }
 
-    @Test(expected = PessoaSemNotException.class)
+    @Test
+    @DisplayName("Não deve adicionar pessoas")
     public void naoDeveAdicionarPessoaComNomeVazio(){
         //cenario
         CadastroPessoas cadastroPessoas = new CadastroPessoas();
@@ -42,12 +48,13 @@ public class TesteCliente {
         Pessoa pessoa = new Pessoa();
 
         //execucao
-        cadastroPessoas.adicionar(pessoa);
+        assertThrows(PessoaSemNotException.class, () -> cadastroPessoas.adicionar(pessoa));
 
 
     }
 
     @Test
+    @DisplayName("Deve remover pessoas")
     public void deveRemoverUmaPessoa(){
 
         CadastroPessoas cadastroPessoas = new CadastroPessoas();
@@ -64,7 +71,8 @@ public class TesteCliente {
 
     }
 
-    @Test(expected = CadastroVazioException.class)
+    @Test
+    @DisplayName("Não deve remover pessoas")
     public void naoDeveRemoverUmaPessoa(){
 
         CadastroPessoas cadastroPessoas = new CadastroPessoas();
@@ -72,7 +80,7 @@ public class TesteCliente {
 
         pessoa.setNome("Fabio");
 
-        cadastroPessoas.remover(pessoa);
+        assertThrows(PessoaSemNotException.class, () -> cadastroPessoas.remover(pessoa));
 
     }
 
